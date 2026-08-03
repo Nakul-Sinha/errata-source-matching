@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.pyc
+working/
+*.pt
+*.npy
+.DS_Store
+dataset.zip
+dataset/
+*.log
+.env
+.kaggle/
