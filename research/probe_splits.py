@@ -11,7 +11,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, get_linear_schedule_with_warmup
 
-sys.path.insert(0, r"G:\Datacurve\gpuchals\newone\research")
+sys.path.insert(0, r"G:\ml\gpuchals\newone\research")
 from train_ce import (
     CrossEncoder,
     PairDataset,
@@ -20,7 +20,7 @@ from train_ce import (
     seed_everything,
 )
 
-DATA = r"G:\Datacurve\gpuchals\newone\dataset\public"
+DATA = r"G:\ml\gpuchals\newone\dataset\public"
 MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
 

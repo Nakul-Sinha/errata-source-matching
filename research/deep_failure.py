@@ -27,7 +27,7 @@ from solution import (
     metric_from_preds,
 )
 
-DATA = Path(r"G:\Datacurve\gpuchals\newone\dataset\public")
+DATA = Path(r"G:\ml\gpuchals\newone\dataset\public")
 train = pd.read_csv(DATA / "train.csv")
 train["label"] = train.apply(label_index, axis=1)
 train["src_year"] = train["provenance_card"].apply(lambda s: int(json.loads(s)["source_year"]))

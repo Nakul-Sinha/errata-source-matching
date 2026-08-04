@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from solution import REF_COLS, STOP, build_query, distinctive, label_index, parse_ref, tokenize
 import pandas as pd
 
-train = pd.read_csv(r"G:\Datacurve\gpuchals\newone\dataset\public\train.csv")
+train = pd.read_csv(r"G:\ml\gpuchals\newone\dataset\public\train.csv")
 train["label"] = train.apply(label_index, axis=1)
 train["src_year"] = train["provenance_card"].apply(lambda s: int(json.loads(s)["source_year"]))
 va = train[train.src_year >= 2011].reset_index(drop=True)

@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 slug = sys.argv[1] if len(sys.argv) > 1 else "errata-minilm-ft-val3"
-out = Path(r"G:\Datacurve\kaggle_output") / slug
+out = Path(r"G:\ml\kaggle_output") / slug
 out.mkdir(parents=True, exist_ok=True)
 
 # Force UTF-8 for kaggle's kernels_output writer on Windows.

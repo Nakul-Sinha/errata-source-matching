@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-train = pd.read_csv(r"G:\Datacurve\gpuchals\newone\dataset\public\train.csv")
+train = pd.read_csv(r"G:\ml\gpuchals\newone\dataset\public\train.csv")
 REFS = [c for c in train.columns if c.startswith("reference_title")]
 
 

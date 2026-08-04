@@ -7,9 +7,9 @@ from pathlib import Path
 
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-ROOT = Path(r"G:\Datacurve\kaggle_staging\errata-provenance-data")
+ROOT = Path(r"G:\ml\kaggle_staging\errata-provenance-data")
 ROOT.mkdir(parents=True, exist_ok=True)
-src = Path(r"G:\Datacurve\gpuchals\newone\dataset\public")
+src = Path(r"G:\ml\gpuchals\newone\dataset\public")
 for name in ("train.csv", "test.csv", "sample_submission.csv"):
     (ROOT / name).write_bytes((src / name).read_bytes())
 

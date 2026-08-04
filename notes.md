@@ -14,7 +14,7 @@
 
 ## Environment
 - Official: Kaggle Docker, A10G, ~1h (+grace), internet for HF/timm weights
-- Must train/fine-tune inside submission script (Eris guidebook)
+- Must train/fine-tune inside submission script (platform guidebook)
 - Paths: `./dataset/public/` → `./working/submission.csv`
 - Local: RTX 4050 6GB; Kaggle API as `nakuls1nha` (ACCESS_TOKEN)
 

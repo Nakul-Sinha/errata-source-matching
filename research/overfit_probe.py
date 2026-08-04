@@ -22,7 +22,7 @@ from train_ce import (
     parse_ref,
 )
 
-DATA = r"G:\Datacurve\gpuchals\newone\dataset\public"
+DATA = r"G:\ml\gpuchals\newone\dataset\public"
 MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
 

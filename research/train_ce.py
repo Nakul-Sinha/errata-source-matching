@@ -197,8 +197,8 @@ def evaluate(logits: np.ndarray, df: pd.DataFrame, temperature: float) -> dict:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", default=r"G:\Datacurve\gpuchals\newone\dataset\public")
-    ap.add_argument("--out", default=r"G:\Datacurve\gpuchals\newone\research\ce_out")
+    ap.add_argument("--data", default=r"G:\ml\gpuchals\newone\dataset\public")
+    ap.add_argument("--out", default=r"G:\ml\gpuchals\newone\research\ce_out")
     ap.add_argument("--model", default="microsoft/deberta-v3-small")
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--batch-size", type=int, default=1)

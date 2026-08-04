@@ -6,7 +6,7 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 
 api = KaggleApi()
 api.authenticate()
-root = Path(r"G:\Datacurve\kaggle_staging\errata-push-smoke")
+root = Path(r"G:\ml\kaggle_staging\errata-push-smoke")
 root.mkdir(parents=True, exist_ok=True)
 (root / "solution.py").write_text('print("hello")\n', encoding="utf-8")
 meta = {

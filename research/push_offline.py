@@ -8,8 +8,8 @@ from pathlib import Path
 
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-ROOT = Path(r"G:\Datacurve\gpuchals\newone")
-STAGING = Path(r"G:\Datacurve\kaggle_staging")
+ROOT = Path(r"G:\ml\gpuchals\newone")
+STAGING = Path(r"G:\ml\kaggle_staging")
 DATASET = "nakuls1nha/errata-provenance-cards-data"
 
 

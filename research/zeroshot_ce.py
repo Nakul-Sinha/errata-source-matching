@@ -12,7 +12,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 REF_COLS = [f"reference_title_{i:02d}" for i in range(1, 17)]
 REF_RE = re.compile(r"^(.*) \((\d{4})\)$")
-DATA = r"G:\Datacurve\gpuchals\newone\dataset\public"
+DATA = r"G:\ml\gpuchals\newone\dataset\public"
 MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
 

@@ -22,7 +22,7 @@ import torch.nn.functional as F
 REF_COLS = [f"reference_title_{i:02d}" for i in range(1, 17)]
 REF_RE = re.compile(r"^(.*) \((\d{4})\)$")
 TOKEN_RE = re.compile(r"[A-Za-z]+(?:['\u2019][A-Za-z]+)*|\d{2,4}")
-DATA = Path(r"G:\Datacurve\gpuchals\newone\dataset\public")
+DATA = Path(r"G:\ml\gpuchals\newone\dataset\public")
 
 
 def parse_ref(s):
