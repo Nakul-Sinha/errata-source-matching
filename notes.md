@@ -42,6 +42,13 @@
 - Token overlap time-holdout ~0.13; chance 0.0625
 - Duplicate titles (diff years) in ~66% of time-val rows — year disambiguation is hard
 - Official metric weights title at 0.85 — optimize title-group ranking first
-- Stateless overlap feat head alone ≈ title 0.26 / score ~0.24 on time holdout
-- Word Transformer unfreeze collapses time-OOD; prefer char-CNN + gated neural path
+- Coverage/phrase oracles ≈ title 0.22–0.26; unique-title overlap train↔time-val golds only ~12%
+- Rich pairwise feature MLP (title-group loss, early stop) ≈ **title 0.366 / score 0.337** on year≥2011 holdout (best compliant so far)
+- MiniLM CE alone collapses on time-OOD (~0); feature-gated blend still trails pure features unless CE is isolated to low-coverage rows
+- Word/char encoder unfreeze often destroys OOD lexical signal — keep neural residual small or cascaded
 - Kaggle research: `enable_internet=false`, pin `NvidiaTeslaT4` (P100 breaks current torch wheels)
+- Repo: https://github.com/Nakul-Sinha/errata-provenance-cards
+
+## Best local time-split score
+- **0.3373** (title_rate 0.3658, both 0.3643, cal ~0.08) — rich feature MLP, epoch 1, seed0
+- Target ≥0.55 still open; zero-overlap semantic cases need stronger compositional matching
