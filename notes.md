@@ -1,12 +1,12 @@
 # Technical Standard Errata Provenance Cards
 
 ## Challenge
-- Task: 16-way candidate ranking — map errata text to source standard title+year
+- Task: 16-way candidate ranking, map errata text to source standard title+year
 - Metric: `0.85 * exact_title + 0.05 * exact_year + 0.10 * confidence_calibration` (higher better)
 - AI baseline: 0.60 (target ≥ 0.51, ideally ≥ 0.60)
 - Train: 5230 · Test: 1524 · no source-document overlap
-- Test docs are newer than train (years: train ≤2013, test ≥2014) — temporal OOD
-- Title overlap train answers ↔ test candidates ≈ 2% — cannot memorize titles
+- Test docs are newer than train (years: train ≤2013, test ≥2014), temporal OOD
+- Title overlap train answers ↔ test candidates ≈ 2%, cannot memorize titles
 - Correct answer always exactly one of `reference_title_01..16` as `Title (YYYY)`
 - Labels uniform across 16 slots
 - Banned: live errata lookup, external LLM APIs at inference, hardcoded id→answer maps
@@ -34,23 +34,23 @@
 1. Fit train-only tokenizer (word/BPE) on errata + reference titles
 2. Train a from-scratch Transformer bi-encoder or cross-encoder with listwise CE over 16 candidates
 3. Optional: feed stateless lexical overlap features into the neural head (not TF-IDF)
-4. Time-based local CV (train ≤2010, val ≥2011) as OOD proxy — critical because test years ≥2014
+4. Time-based local CV (train ≤2010, val ≥2011) as OOD proxy, critical because test years ≥2014
 5. Confidence = temperature-scaled top softmax; fit on holdout
 6. Paths: `./dataset/public` → `./working/submission.csv`; offline Kaggle only if needed
 
 ## Local probes
 - Token overlap time-holdout ~0.13; chance 0.0625
-- Duplicate titles (diff years) in ~66% of time-val rows — year disambiguation is hard
-- Official metric weights title at 0.85 — optimize title-group ranking first
-- Coverage/phrase oracles ≈ title 0.22–0.26; unique-title overlap train↔time-val golds only ~12%
+- Duplicate titles (diff years) in ~66% of time-val rows, year disambiguation is hard
+- Official metric weights title at 0.85, optimize title-group ranking first
+- Coverage/phrase oracles ≈ title 0.22 to 0.26; unique-title overlap train↔time-val golds only ~12%
 - Rich pairwise feature MLP (title-group loss, early stop) ≈ **title 0.366 / score 0.337** on year≥2011 holdout (best compliant so far)
 - MiniLM CE alone collapses on time-OOD (~0); feature-gated blend still trails pure features unless CE is isolated to low-coverage rows
-- Word/char encoder unfreeze often destroys OOD lexical signal — keep neural residual small or cascaded
+- Word/char encoder unfreeze often destroys OOD lexical signal, keep neural residual small or cascaded
 - Kaggle research: `enable_internet=false`, pin `NvidiaTeslaT4` (P100 breaks current torch wheels)
 - Repo: https://github.com/Nakul-Sinha/errata-provenance-cards
 
 ## Best local time-split score
-- **0.3373** (title_rate 0.3658, both 0.3643, cal ~0.08) — rich feature MLP, epoch 1, seed0
+- **0.3373** (title_rate 0.3658, both 0.3643, cal ~0.08), rich feature MLP, epoch 1, seed0
 - Validated ensemble (3 seeds): **0.3324**
 - Split sensitivity: time≥2012 ≈0.340; time≥2011 ≈0.335; frozen DeBERTa+lex ≈0.33 (no gain)
 - Neural MLM/CE residuals repeatedly destroy OOD lexical signal when mixed
