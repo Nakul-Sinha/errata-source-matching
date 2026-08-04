@@ -51,4 +51,8 @@
 
 ## Best local time-split score
 - **0.3373** (title_rate 0.3658, both 0.3643, cal ~0.08) — rich feature MLP, epoch 1, seed0
-- Target ≥0.55 still open; zero-overlap semantic cases need stronger compositional matching
+- Validated ensemble (3 seeds): **0.3324**
+- Split sensitivity: time≥2012 ≈0.340; time≥2011 ≈0.335; frozen DeBERTa+lex ≈0.33 (no gain)
+- Neural MLM/CE residuals repeatedly destroy OOD lexical signal when mixed
+- Target ≥0.55 still open; zero-overlap semantic cases (~58% of val) need compositional matching that does not erase the feature prior
+- PRs: https://github.com/Nakul-Sinha/errata-provenance-cards/pull/1 (merged)
